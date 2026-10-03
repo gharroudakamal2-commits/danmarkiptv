@@ -95,7 +95,7 @@ export function BackToTop() {
       type="button"
       aria-label="Til toppen"
       onClick={() => window.scrollTo({ top: 0 })}
-      className={`fixed right-5 bottom-5 z-40 grid h-11 w-11 place-items-center rounded-full bg-ink text-white shadow-lg transition duration-300 hover:bg-brand ${
+      className={`fixed right-6 bottom-24 z-40 grid h-11 w-11 place-items-center rounded-full bg-ink text-white shadow-lg transition duration-300 hover:bg-brand ${
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { WhatsAppFloat } from "@/components/WhatsAppLink";
 import { BackToTop, RevealObserver, ScrollProgress } from "@/components/Motion";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <BackToTop />
+        <WhatsAppFloat />
         <RevealObserver />
         <JsonLd
           data={{

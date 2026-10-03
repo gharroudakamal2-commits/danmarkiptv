@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { PageShell } from "@/components/PageShell";
+import { PricingTable } from "@/components/PricingTable";
 import { TypesTable } from "@/components/TypesTable";
 import { iptvTypes } from "@/lib/iptvTypes";
+import { plans } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "IPTV abonnement – Sammenlign priser og pakker",
@@ -23,6 +25,14 @@ export default function SubscriptionPage() {
       <div className="mt-10">
         <TypesTable types={iptvTypes} />
       </div>
+
+      <section id="priser" className="mt-16 scroll-mt-24">
+        <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Priser</h2>
+        <p className="mt-2 text-muted">Enkle priser uden binding. Jo længere periode, jo lavere månedspris.</p>
+        <div className="mt-8">
+          <PricingTable plans={plans} />
+        </div>
+      </section>
 
       <div className="prose-da mt-14 max-w-3xl">
         <h2>Typer af IPTV abonnementer</h2>

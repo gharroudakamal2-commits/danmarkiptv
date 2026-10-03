@@ -2,7 +2,12 @@ export const site = {
   name: "Danmark IPTV",
   url: "https://danmarkiptv.top",
   locale: "da_DK",
-  email: "kontakt@danmarkiptv.top",
+  email: "danmarkiptv64@gmail.com",
+  whatsapp: {
+    display: "0751039094",
+    /** International format without "+" or spaces, used for wa.me links. */
+    number: "212751039094",
+  },
   description:
     "Uafhængig guide til IPTV i Danmark. Vi sammenligner lovlige tv- og streamingtjenester, så du finder den bedste IPTV-løsning til din smart-tv, boks eller app.",
 };
@@ -24,6 +29,11 @@ export const footerLinks = [
   { href: "/iptv-abonnement", label: "IPTV abonnement" },
   { href: "/guides", label: "Alle guides" },
 ];
+
+export function whatsappUrl(text?: string) {
+  const base = `https://wa.me/${site.whatsapp.number}`;
+  return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+}
 
 export function absoluteUrl(path = "/") {
   return new URL(path, site.url).toString();

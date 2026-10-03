@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { WhatsAppIcon, WhatsAppLink } from "@/components/WhatsAppLink";
 import { nav, site } from "@/lib/site";
 
 export function Header() {
@@ -58,12 +59,13 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          href="/bedste-iptv-danmark"
-          className="btn-shine hidden rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/30 transition hover:bg-brand-dark lg:inline-block"
+        <WhatsAppLink
+          intro="Hej! Jeg har et spørgsmål om jeres IPTV-abonnement."
+          className="btn-shine hidden items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-semibold text-white shadow-md shadow-emerald-600/30 transition hover:bg-[#1ebe5b] lg:inline-flex"
         >
-          Find bedste IPTV
-        </Link>
+          <WhatsAppIcon className="h-4 w-4" />
+          Kontakt på WhatsApp
+        </WhatsAppLink>
 
         <button
           type="button"

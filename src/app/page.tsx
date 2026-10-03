@@ -3,9 +3,11 @@ import Link from "next/link";
 import { Faq, type FaqItem } from "@/components/Faq";
 import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
+import { PricingTable } from "@/components/PricingTable";
 import { TypesTable } from "@/components/TypesTable";
 import { guides } from "@/lib/guides";
 import { iptvTypes } from "@/lib/iptvTypes";
+import { plans } from "@/lib/plans";
 import { sports } from "@/lib/sports";
 
 export const metadata: Metadata = {
@@ -79,6 +81,18 @@ export default function HomePage() {
           />
           <div data-reveal style={delay(100)} className="mt-10">
             <TypesTable types={iptvTypes} />
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section id="priser" className="mt-28 scroll-mt-24">
+          <SectionTitle
+            eyebrow="Priser"
+            title="Vælg dit abonnement"
+            text="Enkle priser uden binding. Jo længere periode, jo lavere månedspris."
+          />
+          <div className="mt-12">
+            <PricingTable plans={plans} />
           </div>
         </section>
 
