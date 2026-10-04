@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { PageShell } from "@/components/PageShell";
+import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "IPTV på smart-tv – Samsung, LG, Android TV og Philips",
   description:
     "Sådan ser du IPTV på dit smart-tv. Trin-for-trin guide til Samsung, LG, Android TV, Google TV og Philips.",
-  alternates: { canonical: "/iptv-pa-smart-tv" },
+  ...pageMeta("/iptv-pa-smart-tv"),
 };
 
 const brands = [
@@ -38,7 +39,7 @@ export default function SmartTvPage() {
     >
       <div className="mt-10 grid gap-4">
         {brands.map((b) => (
-          <section key={b.name} className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
+          <section key={b.name} className="card-lift rounded-2xl border border-line bg-night-2 p-6">
             <h2 className="text-xl font-bold">{b.name}</h2>
             <p className="mt-2 leading-7 text-muted">{b.steps}</p>
           </section>
@@ -54,6 +55,7 @@ export default function SmartTvPage() {
         </ul>
         <p>
           Find de apps, der virker på dit tv, i vores <Link href="/iptv-app">oversigt over IPTV apps</Link>.
+          Ny i IPTV? Start med guiden <Link href="/iptv-tv">IPTV tv: hvad er IP-tv?</Link>
         </p>
       </div>
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Faq } from "@/components/Faq";
 import { PageShell } from "@/components/PageShell";
+import { Figure } from "@/components/Pillar";
+import { pageMeta } from "@/lib/site";
 import { getSport, sports } from "@/lib/sports";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -18,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!s) return {};
   return {
     title: `Sådan ser du ${s.name} i Danmark (2026)`,
-    description: s.intro,
-    alternates: { canonical: `/sport/${s.slug}` },
+    description: `${s.intro} Få overblik over tv-kanaler, streaming og apps – og se med lovligt.`,
+    ...pageMeta(`/sport/${s.slug}`),
   };
 }
 
@@ -37,6 +39,7 @@ export default async function SportPage({ params }: Props) {
       intro={s.intro}
     >
       <div className="prose-da mt-8">
+        <Figure src={s.image} alt={s.imageAlt} caption={`Se ${s.name} via IPTV på smart-tv, tv-boks, mobil og computer.`} priority reveal={false} />
         <h2>Om {s.name}</h2>
         <p>{s.about}</p>
 
@@ -58,6 +61,10 @@ export default async function SportPage({ params }: Props) {
         <p>
           Gratis streams af {s.name} på ukendte sider er ulovlige og fyldt med pop-ups og
           malware. <Link href="/er-iptv-lovligt">Læs mere om lovlig IPTV</Link>.
+        </p>
+        <p>
+          Følger du også nordisk sport? Læs guiden til <Link href="/iptv-nordic">IPTV Nordic</Link>, eller se
+          vores <Link href="/">IPTV Danmark-abonnement</Link>.
         </p>
       </div>
 

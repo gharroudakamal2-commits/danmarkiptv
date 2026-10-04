@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { PageShell } from "@/components/PageShell";
-import { site } from "@/lib/site";
+import { LegalShell } from "@/components/PageShell";
+import { pageMeta, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ophavsret & DMCA",
   description: `Sådan anmelder du krænkelse af ophavsret eller varemærker på ${site.name}.`,
-  alternates: { canonical: "/dmca" },
+  ...pageMeta("/dmca"),
 };
 
 const requirements = [
@@ -19,22 +19,23 @@ const requirements = [
 
 export default function DmcaPage() {
   return (
-    <PageShell
+    <LegalShell
+      updated={site.updated}
       crumbs={[{ name: "Ophavsret & DMCA", href: "/dmca" }]}
       title="Ophavsret & DMCA"
       intro="Vi respekterer ophavsret og varemærker. Her kan du se, hvordan du anmelder indhold, som du mener krænker dine rettigheder."
     >
-      <div className="prose-da mt-10">
+      <div>
         <h2>Hvad vi gør</h2>
         <p>
-          {site.name} er en informationsside. Vi hoster, streamer eller videresender ikke
-          tv-kanaler, film eller andet beskyttet indhold. Modtager vi en gyldig anmeldelse,
-          fjerner vi det pågældende indhold hurtigst muligt.
+          Vi tager ophavsret alvorligt. Modtager vi en gyldig anmeldelse om indhold på
+          hjemmesiden eller i vores tjeneste, undersøger vi den og fjerner det pågældende indhold
+          hurtigst muligt.
         </p>
 
         <h2>Sådan sender du en anmeldelse</h2>
         <p>Send en e-mail til <a href={`mailto:${site.email}`}>{site.email}</a> med følgende:</p>
-        <ol className="mb-4 list-decimal space-y-2 pl-6 text-muted marker:font-bold marker:text-brand">
+        <ol className="mb-4 list-decimal space-y-2 pl-6 text-muted marker:font-bold marker:text-rose-400">
           {requirements.map((r) => (
             <li key={r}>{r}</li>
           ))}
@@ -62,6 +63,6 @@ export default function DmcaPage() {
           <em>Bevidst falske anmeldelser kan medføre erstatningsansvar.</em>
         </p>
       </div>
-    </PageShell>
+    </LegalShell>
   );
 }

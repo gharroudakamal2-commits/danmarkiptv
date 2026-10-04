@@ -13,13 +13,15 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+          background: "linear-gradient(135deg, #f43f5e, #be123c)",
           color: "white",
           fontSize: 76,
           fontWeight: 800,
         }}
       >
-        DK
+        <svg width="84" height="84" viewBox="0 0 24 24" style={{ marginLeft: 7 }}>
+          <path d="M7 4.5v15l12-7.5z" fill="white" />
+        </svg>
       </div>
     ),
     size,

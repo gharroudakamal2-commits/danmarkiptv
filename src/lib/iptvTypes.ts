@@ -5,9 +5,10 @@ export type IptvType = {
   name: string;
   tagline: string;
   channels: string;
-  sport: boolean;
+  /** How much live sport the type typically covers. */
+  sport: string;
   binding: string;
-  price: "Gratis" | "Lav" | "Mellem" | "Høj";
+  price: "Gratis" | "Mellem" | "Høj";
   bestFor: string;
   pros: string[];
   cons: string[];
@@ -19,7 +20,7 @@ export const iptvTypes: IptvType[] = [
     name: "Tv-pakke via bredbånd",
     tagline: "Mange danske og udenlandske kanaler samlet ét sted",
     channels: "Mange",
-    sport: true,
+    sport: "Bred dækning",
     binding: "Ofte 0–6 mdr.",
     price: "Høj",
     bestFor: "Familier der vil have et bredt kanaludvalg",
@@ -31,7 +32,7 @@ export const iptvTypes: IptvType[] = [
     name: "Streamingtjeneste med live-tv",
     tagline: "Live-kanaler og on demand i én app",
     channels: "Få–mellem",
-    sport: true,
+    sport: "Udvalgte kanaler",
     binding: "Typisk ingen",
     price: "Mellem",
     bestFor: "Dig der vil have fleksibilitet uden binding",
@@ -43,7 +44,7 @@ export const iptvTypes: IptvType[] = [
     name: "Sportsstreaming",
     tagline: "Fokus på live sport i HD og 4K",
     channels: "Få",
-    sport: true,
+    sport: "Fokus på sport",
     binding: "Typisk ingen",
     price: "Mellem",
     bestFor: "Sportsfans der følger bestemte ligaer",
@@ -55,7 +56,7 @@ export const iptvTypes: IptvType[] = [
     name: "Gratis public service-streaming",
     tagline: "Gratis live-tv og arkiv uden abonnement",
     channels: "Få",
-    sport: true,
+    sport: "Enkelte begivenheder",
     binding: "Ingen",
     price: "Gratis",
     bestFor: "Dig der primært ser nyheder, dokumentar og børne-tv",

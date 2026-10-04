@@ -3,8 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
+import { Figure } from "@/components/Pillar";
 import { getGuide, guides } from "@/lib/guides";
-import { absoluteUrl, site } from "@/lib/site";
+import { absoluteUrl, pageMeta, site } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -20,8 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: g.title,
     description: g.description,
-    alternates: { canonical: `/guides/${g.slug}` },
-    openGraph: { type: "article", publishedTime: g.date },
+    ...pageMeta(`/guides/${g.slug}`, { publishedTime: g.date }),
   };
 }
 
@@ -45,6 +45,7 @@ export default async function GuidePage({ params }: Props) {
       </p>
 
       <div className="prose-da mt-8">
+        <Figure src={g.image} alt={g.imageAlt} caption={g.imageCaption} priority reveal={false} />
         {g.sections.map((s) => (
           <section key={s.heading}>
             <h2>{s.heading}</h2>
@@ -52,17 +53,18 @@ export default async function GuidePage({ params }: Props) {
           </section>
         ))}
         <p>
-          Klar til at vælge? Se <Link href="/bedste-iptv-danmark">bedste IPTV i Danmark</Link>.
+          Vil du vide mere? Læs den store guide <Link href="/iptv-tv">IPTV tv: hvad er IP-tv?</Link>, eller
+          se <Link href="/bedste-iptv-danmark">bedste IPTV i Danmark</Link>.
         </p>
       </div>
 
       {related.length > 0 && (
-        <aside className="mt-12 rounded-xl bg-slate-50 p-6">
+        <aside className="mt-12 rounded-xl bg-paper p-6">
           <p className="font-bold">Læs også</p>
           <ul className="mt-2 space-y-1 text-sm">
             {related.map((r) => (
               <li key={r.slug}>
-                <Link href={`/guides/${r.slug}`} className="text-brand hover:underline">{r.title}</Link>
+                <Link href={`/guides/${r.slug}`} className="font-medium text-rose-400 hover:underline">{r.title}</Link>
               </li>
             ))}
           </ul>
@@ -79,8 +81,9 @@ export default async function GuidePage({ params }: Props) {
           dateModified: g.date,
           inLanguage: "da-DK",
           mainEntityOfPage: absoluteUrl(`/guides/${g.slug}`),
-          author: { "@type": "Organization", name: site.name },
-          publisher: { "@type": "Organization", name: site.name },
+          image: [absoluteUrl(g.image.src), absoluteUrl(`/guides/${g.slug}/opengraph-image`)],
+          author: { "@id": `${site.url}/#organization` },
+          publisher: { "@id": `${site.url}/#organization` },
         }}
       />
     </PageShell>

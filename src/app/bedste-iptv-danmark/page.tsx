@@ -4,12 +4,13 @@ import { Faq } from "@/components/Faq";
 import { PageShell } from "@/components/PageShell";
 import { TypesTable } from "@/components/TypesTable";
 import { iptvTypes } from "@/lib/iptvTypes";
+import { pageMeta, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Bedste IPTV i Danmark 2026 – Sådan vælger du rigtigt",
   description:
     "Hvad er den bedste IPTV i Danmark? Sammenlign tv-pakker, streaming med live-tv, sportsstreaming og gratis løsninger på kanaler, sport, binding og pris.",
-  alternates: { canonical: "/bedste-iptv-danmark" },
+  ...pageMeta("/bedste-iptv-danmark"),
 };
 
 export default function BestIptvPage() {
@@ -25,6 +26,12 @@ export default function BestIptvPage() {
       </div>
 
       <div className="prose-da mt-14 max-w-3xl">
+        <p className="text-sm">
+          <em>
+            Bemærk: {site.name} sælger selv <Link href="/iptv-abonnement">IPTV-abonnementer</Link>.
+            Sammenligningen dækker generelle typer af tv-løsninger og nævner ikke andre udbydere.
+          </em>
+        </p>
         <h2>Sådan har vi vurderet</h2>
         <ul>
           <li><strong>Kanaler:</strong> Hvor mange danske kanaler og hvilke typer indhold der er med.</li>
@@ -49,7 +56,9 @@ export default function BestIptvPage() {
         <h2>Næste skridt</h2>
         <p>
           Tjek at din løsning virker på dit <Link href="/iptv-pa-smart-tv">smart-tv</Link>, og at
-          dit <Link href="/guides/hvor-hurtigt-internet-til-iptv">internet er hurtigt nok</Link>.
+          dit <Link href="/guides/hvor-hurtigt-internet-til-iptv">internet er hurtigt nok</Link>. Se
+          også vores <Link href="/">IPTV Danmark-abonnement</Link> og guiden til{" "}
+          <Link href="/iptv-nordic">IPTV Nordic</Link>.
         </p>
       </div>
 

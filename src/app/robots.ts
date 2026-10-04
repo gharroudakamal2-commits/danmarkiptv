@@ -1,9 +1,26 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
 
+// AI search and answer engines are allowed explicitly so the site can be cited in
+// ChatGPT, Perplexity, Claude, Copilot and Google AI Overviews.
+const aiCrawlers = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "PerplexityBot",
+  "Google-Extended",
+  "Applebot-Extended",
+  "Bingbot",
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: [
+      { userAgent: "*", allow: "/" },
+      { userAgent: aiCrawlers, allow: "/" },
+    ],
     sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

@@ -1,22 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
+import type { IconName } from "@/components/Icon";
 import { PageShell } from "@/components/PageShell";
+import { IconBadge } from "@/components/ui";
+import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "IPTV app – De bedste tv-apps i Danmark",
   description:
     "Hvilken IPTV app skal du bruge? Se hvilke danske tv-apps der virker på smart-tv, mobil, tablet og tv-boks.",
-  alternates: { canonical: "/iptv-app" },
+  ...pageMeta("/iptv-app"),
 };
 
-const platforms = [
-  { icon: "📺", name: "Smart-tv", text: "Hent appen i tv'ets egen app-butik og log ind." },
-  { icon: "📦", name: "Tv-boks", text: "Tv-bokse har deres egne app-butikker med de fleste tv-apps." },
-  { icon: "📱", name: "Mobil", text: "Hent appen i App Store eller Google Play." },
-  { icon: "💻", name: "Computer", text: "De fleste tjenester kan ses direkte i browseren." },
-  { icon: "🪄", name: "Cast", text: "Start programmet på mobilen, og send det til tv'et." },
-  { icon: "📲", name: "Tablet", text: "Perfekt til at se tv i køkkenet eller på farten." },
+const platforms: { icon: IconName; name: string; text: string }[] = [
+  { icon: "tv", name: "Smart-tv", text: "Hent appen i tv'ets egen app-butik og log ind." },
+  { icon: "box", name: "Tv-boks", text: "Tv-bokse har deres egne app-butikker med de fleste tv-apps." },
+  { icon: "smartphone", name: "Mobil", text: "Hent appen i App Store eller Google Play." },
+  { icon: "monitor", name: "Computer", text: "De fleste tjenester kan ses direkte i browseren." },
+  { icon: "cast", name: "Cast", text: "Start programmet på mobilen, og send det til tv'et." },
+  { icon: "tablet", name: "Tablet", text: "Perfekt til at se tv i køkkenet eller på farten." },
 ];
 
 export default function AppPage() {
@@ -29,11 +32,9 @@ export default function AppPage() {
     >
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {platforms.map((p) => (
-          <div key={p.name} className="card-lift group rounded-2xl border border-slate-200 bg-white p-6">
-            <div className="grid h-12 w-12 place-items-center rounded-xl bg-sky-50 text-2xl transition duration-300 group-hover:scale-110 group-hover:rotate-6">
-              {p.icon}
-            </div>
-            <h2 className="mt-4 text-lg font-bold">{p.name}</h2>
+          <div key={p.name} className="card-lift group rounded-2xl border border-line bg-night-2 p-6">
+            <IconBadge name={p.icon} />
+            <h2 className="mt-5 text-lg font-semibold">{p.name}</h2>
             <p className="mt-2 text-sm leading-6 text-muted">{p.text}</p>
           </div>
         ))}
@@ -56,7 +57,8 @@ export default function AppPage() {
         </p>
         <p>
           Se også vores guides til <Link href="/iptv-pa-smart-tv">IPTV på smart-tv</Link> og{" "}
-          <Link href="/iptv-boks">IPTV-bokse</Link>.
+          <Link href="/iptv-boks">IPTV-bokse</Link>. Vil du forstå, hvordan det hele hænger sammen,
+          så læs den store guide <Link href="/iptv-tv">IPTV tv: hvad er IP-tv?</Link>
         </p>
       </div>
 

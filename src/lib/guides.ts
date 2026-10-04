@@ -1,11 +1,19 @@
 // Blog/guide articles. Each section renders as an <h2> with paragraphs.
 // Add new guides here — they are picked up automatically by /guides and the sitemap.
 
+import type { StaticImageData } from "next/image";
+import gratisTv from "../../public/images/guide-gratis-tv.jpg";
+import internetHastighed from "../../public/images/guide-internet-hastighed.jpg";
+import iptvVsParabol from "../../public/images/guide-iptv-vs-parabol.jpg";
+
 export type Guide = {
   slug: string;
   title: string;
   description: string;
   date: string; // ISO date
+  image: StaticImageData;
+  imageAlt: string;
+  imageCaption: string;
   sections: { heading: string; paragraphs: string[] }[];
 };
 
@@ -16,6 +24,9 @@ export const guides: Guide[] = [
     description:
       "Skal du vælge IPTV eller parabol? Vi sammenligner installation, billedkvalitet, fleksibilitet og pris.",
     date: "2026-10-03",
+    image: iptvVsParabol,
+    imageAlt: "Dansk murstenshus med parabol på muren og et tv, der lyser i stuen",
+    imageCaption: "Parabol på muren, IPTV i stuen – to måder at få tv ind i huset.",
     sections: [
       {
         heading: "Den korte forskel",
@@ -55,6 +66,9 @@ export const guides: Guide[] = [
     description:
       "Se hvor mange Mbit/s du skal bruge til IPTV i HD og 4K, og få tips til et stabilt billede uden hakken.",
     date: "2026-10-03",
+    image: internetHastighed,
+    imageAlt: "Wifi-router der sender signal til et smart-tv i stuen",
+    imageCaption: "En stabil forbindelse fra routeren betyder mere end topfart, når du ser IPTV.",
     sections: [
       {
         heading: "Hastighed pr. stream",
@@ -82,6 +96,9 @@ export const guides: Guide[] = [
     description:
       "Du kan se meget dansk tv gratis og lovligt. Her er dine muligheder – fra public service-streaming til antenne-tv.",
     date: "2026-10-03",
+    image: gratisTv,
+    imageAlt: "Nordisk hus med tv-antenne på taget en aften",
+    imageCaption: "Med en antenne kan du se en række kanaler uden abonnement.",
     sections: [
       {
         heading: "Public service-streaming",

@@ -1,19 +1,21 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppFloat } from "@/components/WhatsAppLink";
-import { BackToTop, RevealObserver, ScrollProgress } from "@/components/Motion";
+import { PointerSpotlight, RevealObserver } from "@/components/Motion";
 import { site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
+export const viewport: Viewport = { themeColor: "#07090f" };
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "IPTV Danmark – Find den bedste lovlige IPTV i 2026",
+    default: "IPTV Danmark – IPTV-abonnement til smart-tv, boks og mobil",
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -34,13 +36,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body>
-        <ScrollProgress />
         <Header />
         <main>{children}</main>
         <Footer />
-        <BackToTop />
         <WhatsAppFloat />
         <RevealObserver />
+        <PointerSpotlight />
         <JsonLd
           data={{
             "@context": "https://schema.org",
@@ -51,6 +52,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 name: site.name,
                 url: site.url,
                 email: site.email,
+                logo: { "@type": "ImageObject", url: `${site.url}/apple-icon`, width: 180, height: 180 },
+                description: site.description,
+                areaServed: { "@type": "Country", name: "Danmark" },
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "customer support",
+                  email: site.email,
+                  telephone: `+${site.whatsapp.number}`,
+                  availableLanguage: ["da"],
+                },
               },
               {
                 "@type": "WebSite",

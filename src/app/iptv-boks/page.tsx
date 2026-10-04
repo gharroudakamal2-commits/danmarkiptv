@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { PageShell } from "@/components/PageShell";
+import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "IPTV boks – Bedste tv-boks til IPTV i Danmark",
   description:
     "Hvilken IPTV boks skal du vælge? Sammenlign Apple TV, Google TV Streamer, Fire TV Stick og Chromecast.",
-  alternates: { canonical: "/iptv-boks" },
+  ...pageMeta("/iptv-boks"),
 };
 
 const boxes = [
@@ -42,7 +43,7 @@ export default function BoxPage() {
     >
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {boxes.map((b) => (
-          <section key={b.name} className="card-lift rounded-2xl border border-slate-200 bg-white p-6">
+          <section key={b.name} className="card-lift rounded-2xl border border-line bg-night-2 p-6">
             <h2 className="text-lg font-bold">{b.name}</h2>
             <p className="mt-2 text-sm leading-6 text-muted">{b.good}</p>
             <p className="mt-2 text-sm leading-6"><strong>God til:</strong> {b.for}</p>
@@ -57,6 +58,10 @@ export default function BoxPage() {
           adgang til ulovligt indhold. Salg af den slags bokse er ulovligt, og de kan blive
           blokeret uden varsel. Køb en almindelig boks, og brug lovlige{" "}
           <Link href="/iptv-app">IPTV apps</Link>.
+        </p>
+        <p>
+          Læs mere om, hvad du skal bruge, i guiden <Link href="/iptv-tv">IPTV tv: hvad er IP-tv?</Link>,
+          eller se vores <Link href="/">IPTV Danmark-abonnement</Link>.
         </p>
       </div>
 

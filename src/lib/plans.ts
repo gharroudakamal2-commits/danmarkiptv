@@ -6,7 +6,10 @@ export type Plan = {
   name: string;
   period: string;
   price: number;
-  /** Price before discount, shown struck through. Optional. */
+  /**
+   * Price before discount, shown struck through. Optional. Danish law requires this to be the
+   * lowest price actually charged for the plan in the previous 30 days — never an invented one.
+   */
   oldPrice?: number;
   /** Shown as "≈ X kr./md." under the price. */
   perMonth?: number;
@@ -29,7 +32,6 @@ export const plans: Plan[] = [
     name: "3 måneder",
     period: "3 måneder",
     price: 269,
-    oldPrice: 297,
     perMonth: 90,
     features: ["Live-tv og on demand", "HD og 4K", "1 skærm", "Ingen binding", "Support via e-mail"],
   },
@@ -38,7 +40,6 @@ export const plans: Plan[] = [
     name: "6 måneder",
     period: "6 måneder",
     price: 499,
-    oldPrice: 594,
     perMonth: 83,
     features: ["Live-tv og on demand", "HD og 4K", "2 skærme", "Ingen binding", "Prioriteret support"],
     popular: true,
@@ -48,7 +49,6 @@ export const plans: Plan[] = [
     name: "12 måneder",
     period: "12 måneder",
     price: 899,
-    oldPrice: 1188,
     perMonth: 75,
     features: ["Live-tv og on demand", "HD og 4K", "2 skærme", "Ingen binding", "Prioriteret support"],
   },

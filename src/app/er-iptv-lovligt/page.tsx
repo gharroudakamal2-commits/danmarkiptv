@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 import { Faq } from "@/components/Faq";
+import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Er IPTV lovligt i Danmark? Det skal du vide",
   description:
     "IPTV er lovligt, når udbyderen har rettighederne. Lær at kende forskel på lovlig og ulovlig IPTV i Danmark, og hvad du risikerer.",
-  alternates: { canonical: "/er-iptv-lovligt" },
+  ...pageMeta("/er-iptv-lovligt"),
 };
 
 export default function LegalPage() {
@@ -43,7 +44,8 @@ export default function LegalPage() {
         <h2>Lovlige alternativer</h2>
         <p>
           Der findes mange lovlige og prisvenlige muligheder – fra gratis public service-streaming til fulde
-          tv-pakker. Se <Link href="/bedste-iptv-danmark">vores sammenligning</Link>.
+          tv-pakker. Se <Link href="/bedste-iptv-danmark">vores sammenligning</Link>, læs om{" "}
+          <Link href="/iptv-tv">hvad IPTV er</Link>, eller om lovlig <Link href="/iptv-nordic">IPTV Nordic</Link>.
         </p>
 
         <p className="text-sm">

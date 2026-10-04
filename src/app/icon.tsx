@@ -14,13 +14,15 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 14,
-          background: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+          background: "linear-gradient(135deg, #f43f5e, #be123c)",
           color: "white",
           fontSize: 28,
           fontWeight: 800,
         }}
       >
-        DK
+        <svg width="30" height="30" viewBox="0 0 24 24" style={{ marginLeft: 2 }}>
+          <path d="M7 4.5v15l12-7.5z" fill="white" />
+        </svg>
       </div>
     ),
     size,

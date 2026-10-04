@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { Icon } from "@/components/Icon";
 import { PageShell } from "@/components/PageShell";
 import { guides } from "@/lib/guides";
+import { pageMeta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Guides om IPTV og tv i Danmark",
-  description: "Guides og tips om IPTV, streaming, internet og tv-bokse i Danmark.",
-  alternates: { canonical: "/guides" },
+  description:
+    "Praktiske guides om IPTV i Danmark: vælg den rigtige tjeneste, find det internet du skal bruge, og se tv lovligt på smart-tv, boks og mobil.",
+  ...pageMeta("/guides"),
 };
 
 export default function GuidesPage() {
@@ -22,10 +26,26 @@ export default function GuidesPage() {
           <Link
             key={g.slug}
             href={`/guides/${g.slug}`}
-            className="card-lift group rounded-2xl border border-slate-200 bg-white p-6"
+            className="card-lift group flex flex-col overflow-hidden rounded-2xl border border-line bg-night-2"
           >
-            <h2 className="text-lg font-bold">{g.title}</h2>
-            <p className="mt-2 text-sm leading-6 text-muted">{g.description}</p>
+            <div className="relative aspect-[16/9] overflow-hidden">
+              <Image
+                src={g.image}
+                alt={g.imageAlt}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                placeholder="blur"
+                className="object-cover transition duration-[1.5s] ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-night-2 via-transparent to-transparent" />
+            </div>
+            <div className="flex flex-1 flex-col p-6 pt-3">
+              <h2 className="text-lg font-bold">{g.title}</h2>
+              <p className="mt-2 flex-1 text-sm leading-6 text-muted">{g.description}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-400">
+                Læs guiden <Icon name="arrowRight" className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </span>
+            </div>
           </Link>
         ))}
       </div>
