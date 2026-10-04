@@ -56,6 +56,30 @@ export function Figure({
   );
 }
 
+export type Source = { label: string; href: string };
+
+/** Primary sources behind the page's factual claims — shown as a "Kilder" list. */
+export function Sources({ items }: { items: Source[] }) {
+  if (items.length === 0) return null;
+  return (
+    <section aria-labelledby="kilder" className="not-prose mt-12 rounded-2xl border border-line bg-night-2 p-6">
+      <h2 id="kilder" className="flex items-center gap-2 text-base font-semibold text-ink">
+        <Icon name="fileText" className="h-4 w-4 text-rose-400" /> Kilder
+      </h2>
+      <ul className="mt-3 space-y-2 text-sm">
+        {items.map((s) => (
+          <li key={s.href} className="flex gap-2 text-muted">
+            <span aria-hidden>·</span>
+            <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-slate-300 underline decoration-white/20 underline-offset-2 hover:text-white">
+              {s.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 /** Two-column fact table — easy for both readers and crawlers to extract. */
 export function KeyFacts({ caption, rows }: { caption: string; rows: [string, string][] }) {
   return (
@@ -87,6 +111,7 @@ export function PillarPage({
   related,
   about,
   image,
+  sources = [],
 }: {
   path: string;
   crumb: string;
@@ -101,6 +126,7 @@ export function PillarPage({
   about: { name: string; sameAs?: string }[];
   /** Lead image for the Article schema (falls back to the site OG image). */
   image?: StaticImageData;
+  sources?: Source[];
 }) {
   const updated = new Date(site.updated).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" });
 
@@ -130,6 +156,8 @@ export function PillarPage({
               <FaqList items={faq} />
             </div>
           </section>
+
+          <Sources items={sources} />
         </article>
 
         <aside className="hidden lg:block">

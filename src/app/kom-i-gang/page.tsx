@@ -6,7 +6,7 @@ import { FaqSchema, FaqList, type FaqItem } from "@/components/Faq";
 import { Icon, type IconName } from "@/components/Icon";
 import { CtaBand, PageHeader } from "@/components/PageShell";
 import { Container, IconBadge, SectionHeader } from "@/components/ui";
-import { pageMeta } from "@/lib/site";
+import { pageMeta, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kom i gang med IPTV – trin for trin",
@@ -103,8 +103,9 @@ export default function GetStartedPage() {
     <>
       <PageHeader
         crumbs={[{ name: "Kom i gang", href: "/kom-i-gang" }]}
-        title="Kom i gang på få minutter"
-        intro="Fra bestilling til tv på skærmen – sådan gør du, og det skal du bruge."
+        title="Kom i gang med IPTV på få minutter"
+        intro="Fra bestilling til tv på skærmen: sådan kommer du i gang med dit IPTV-abonnement, og det skal du bruge."
+        updated={site.updated}
       />
 
       <section className="py-24">

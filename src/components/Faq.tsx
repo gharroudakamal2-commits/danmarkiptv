@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { Icon } from "./Icon";
 import { JsonLd } from "./JsonLd";
 
-export type FaqItem = { q: string; a: string };
+export type FaqItem = { q: string; a: string; link?: { href: string; label: string } };
 
 /** FAQPage structured data. Emit once per page, even when the page shows several FAQ groups. */
 export function FaqSchema({ items }: { items: FaqItem[] }) {
@@ -30,7 +31,17 @@ export function FaqList({ items }: { items: FaqItem[] }) {
             {item.q}
             <Icon name="chevronDown" className="h-5 w-5 shrink-0 text-muted transition duration-300 group-open:rotate-180 group-open:text-rose-400" />
           </summary>
-          <p className="-mt-1 pb-6 leading-7 text-muted">{item.a}</p>
+          <p className="-mt-1 pb-6 leading-7 text-muted">
+            {item.a}
+            {item.link && (
+              <>
+                {" "}
+                <Link href={item.link.href} className="font-medium whitespace-nowrap text-rose-400 hover:underline">
+                  {item.link.label} →
+                </Link>
+              </>
+            )}
+          </p>
         </details>
       ))}
     </div>

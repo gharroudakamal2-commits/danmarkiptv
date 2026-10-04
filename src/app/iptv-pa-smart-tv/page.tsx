@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { PageShell } from "@/components/PageShell";
-import { pageMeta } from "@/lib/site";
+import { pageMeta, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "IPTV på smart-tv – Samsung, LG, Android TV og Philips",
@@ -36,6 +36,7 @@ export default function SmartTvPage() {
       crumbs={[{ name: "IPTV på smart-tv", href: "/iptv-pa-smart-tv" }]}
       title="IPTV på smart-tv"
       intro="De fleste nye fjernsyn kan vise IPTV direkte via en app. Her er guiden til de mest udbredte tv-mærker i Danmark."
+      updated={site.updated}
     >
       <div className="mt-10 grid gap-4">
         {brands.map((b) => (
@@ -47,6 +48,30 @@ export default function SmartTvPage() {
       </div>
 
       <div className="prose-da mt-12">
+        <h2>Tjek om dit tv kan bruges</h2>
+        <p>
+          De fleste smart-tv fra de seneste fem-seks år kan installere tv-apps. Ældre tv kan mangle
+          nyere apps eller være for langsomme til at afspille dem stabilt. Søg efter appen i tv&apos;ets
+          app-butik – findes den ikke, er en <Link href="/iptv-boks">tv-boks</Link> den nemmeste løsning.
+        </p>
+
+        <h2>Indstillinger der giver et bedre billede</h2>
+        <ul>
+          <li>Vælg billedtilstanden &quot;Film&quot;, &quot;Biograf&quot; eller &quot;Standard&quot; i stedet for &quot;Livlig&quot; eller &quot;Butik&quot;.</li>
+          <li>Slå energisparetilstand fra, hvis billedet virker mørkt.</li>
+          <li>Brug 5 GHz-wifi eller netværkskabel – 2,4 GHz-wifi er oftere ustabilt.</li>
+          <li>Installer firmwareopdateringer til tv&apos;et under indstillinger.</li>
+        </ul>
+
+        <h2>Hvis appen ikke virker på dit tv</h2>
+        <ol>
+          <li>Sluk tv&apos;et, og træk stikket ud i et minut – det rydder hukommelsen.</li>
+          <li>Opdater tv&apos;ets software og appen.</li>
+          <li>Afinstaller og geninstaller appen.</li>
+          <li>Tjek internetforbindelsen i tv&apos;ets netværksindstillinger.</li>
+          <li>Prøv appen på en tv-boks for at se, om fejlen skyldes tv&apos;et.</li>
+        </ol>
+
         <h2>Tips til det bedste billede</h2>
         <ul>
           <li>Forbind tv&apos;et med netværkskabel i stedet for wifi, hvis det er muligt.</li>

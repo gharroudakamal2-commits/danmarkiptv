@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
-import { Figure } from "@/components/Pillar";
+import { Figure, Sources } from "@/components/Pillar";
 import { getGuide, guides } from "@/lib/guides";
 import { absoluteUrl, pageMeta, site } from "@/lib/site";
 
@@ -57,6 +57,8 @@ export default async function GuidePage({ params }: Props) {
           se <Link href="/bedste-iptv-danmark">bedste IPTV i Danmark</Link>.
         </p>
       </div>
+
+      <Sources items={g.sources ?? []} />
 
       {related.length > 0 && (
         <aside className="mt-12 rounded-xl bg-paper p-6">

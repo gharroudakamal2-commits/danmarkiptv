@@ -20,6 +20,7 @@ export default function BestIptvPage() {
       crumbs={[{ name: "Bedste IPTV i Danmark", href: "/bedste-iptv-danmark" }]}
       title="Bedste IPTV i Danmark (2026)"
       intro="Den bedste IPTV afhænger af, hvad du vil se. Her sammenligner vi de fire typer af lovlige tv-løsninger i Danmark på kanaler, sport, binding og pris."
+      updated={site.updated}
     >
       <div className="-mt-6">
         <TypesTable types={iptvTypes} />

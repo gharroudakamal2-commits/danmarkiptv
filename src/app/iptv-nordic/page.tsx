@@ -85,8 +85,10 @@ const sections: PillarSection[] = [
       <>
         <p>
           Bor du i et EU-land og betaler for en streamingtjeneste, giver EU&apos;s
-          portabilitetsforordning (forordning 2017/1128) dig ret til at bruge abonnementet, når du
-          midlertidigt opholder dig i et andet EU-land – fx på ferie i Sverige eller Finland.
+          portabilitetsforordning (<a href="https://eur-lex.europa.eu/eli/reg/2017/1128/oj/eng" target="_blank" rel="noopener noreferrer">forordning 2017/1128</a>),
+          der har gældt siden april 2018, dig ret til at bruge abonnementet, når du midlertidigt
+          opholder dig i et andet EU-land – fx på ferie i Sverige eller Finland. Det gælder også
+          sportsbegivenheder, og du skal have samme indhold, på samme enheder og uden ekstra betaling.
         </p>
         <Figure
           src={travelImage}
@@ -194,6 +196,12 @@ export default function IptvNordicPillar() {
       sections={sections}
       faq={faq}
       image={mapImage}
+      sources={[
+        { label: "EUR-Lex – Forordning (EU) 2017/1128 om grænseoverskridende portabilitet", href: "https://eur-lex.europa.eu/eli/reg/2017/1128/oj/eng" },
+        { label: "EUR-Lex – Content portability (ordforklaring)", href: "https://eur-lex.europa.eu/EN/legal-content/glossary/content-portability.html" },
+        { label: "Kulturministeriet – Ophavsret: film", href: "https://kum.dk/kulturomraader/ophavsret/film" },
+        { label: "Teleindustrien – Blokeringer ved rettighedskrænkelser", href: "https://www.teleindu.dk/blokeringer-ved-rettighedskraenkelser/" },
+      ]}
       about={[
         { name: "IPTV", sameAs: "https://da.wikipedia.org/wiki/IPTV" },
         { name: "Norden", sameAs: "https://da.wikipedia.org/wiki/Norden" },

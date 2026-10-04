@@ -4,7 +4,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ophavsret & DMCA",
-  description: `Sådan anmelder du krænkelse af ophavsret eller varemærker på ${site.name}.`,
+  description: `Sådan anmelder du krænkelse af ophavsret eller varemærker hos ${site.name}: hvad anmeldelsen skal indeholde, og hvordan vi behandler den.`,
   ...pageMeta("/dmca"),
 };
 

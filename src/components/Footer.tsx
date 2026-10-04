@@ -2,7 +2,9 @@ import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { Logo } from "@/components/ui";
 import { WhatsAppIcon, WhatsAppLink } from "@/components/WhatsAppLink";
+import { guides } from "@/lib/guides";
 import { footerColumns, legalLinks, site } from "@/lib/site";
+import { sports } from "@/lib/sports";
 
 function Column({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   return (
@@ -21,11 +23,21 @@ function Column({ title, links }: { title: string; links: { href: string; label:
   );
 }
 
+/** Static columns plus the sport and guide pages, so every article is linked site-wide. */
+const columns = [
+  ...footerColumns.map((c) =>
+    c.title === "Guides"
+      ? { ...c, links: [...c.links, ...guides.map((g) => ({ href: `/guides/${g.slug}`, label: g.title.split(":")[0].split(" – ")[0] }))] }
+      : c,
+  ),
+  { title: "Sport", links: sports.map((s) => ({ href: `/sport/${s.slug}`, label: s.name })) },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-line bg-black/30 text-slate-400">
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-10 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
+        <div className="grid gap-12 lg:grid-cols-[1fr_2.6fr]">
           <div className="max-w-sm">
             <Link href="/">
               <Logo dark />
@@ -46,8 +58,8 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {footerColumns.map((c) => (
+          <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-5">
+            {columns.map((c) => (
               <Column key={c.title} title={c.title} links={c.links} />
             ))}
             <Column title="Juridisk" links={legalLinks} />

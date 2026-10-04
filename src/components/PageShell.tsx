@@ -9,7 +9,23 @@ import { Aurora, ButtonLink, Container } from "./ui";
 type Crumb = { name: string; href: string };
 
 /** Dark page header shared by every inner page. No reveal animation: it is above the fold. */
-export function PageHeader({ crumbs, title, intro, children }: { crumbs: Crumb[]; title: string; intro?: string; children?: React.ReactNode }) {
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" });
+
+export function PageHeader({
+  crumbs,
+  title,
+  intro,
+  updated,
+  children,
+}: {
+  crumbs: Crumb[];
+  title: string;
+  intro?: string;
+  /** ISO date shown as "Opdateret …" under the intro. */
+  updated?: string;
+  children?: React.ReactNode;
+}) {
   return (
     <header className="relative isolate overflow-hidden text-white">
       <Aurora />
@@ -25,6 +41,11 @@ export function PageHeader({ crumbs, title, intro, children }: { crumbs: Crumb[]
             {intro}
           </p>
         )}
+        {updated && (
+          <p className="hero-fade mt-6 flex items-center gap-2 text-sm text-slate-400" style={{ "--d": "220ms" } as React.CSSProperties}>
+            <Icon name="clock" className="h-4 w-4" /> Opdateret {formatDate(updated)}
+          </p>
+        )}
         {children}
       </Container>
     </header>
@@ -36,17 +57,19 @@ export function PageShell({
   title,
   intro,
   wide = false,
+  updated,
   children,
 }: {
   crumbs: Crumb[];
   title: string;
   intro?: string;
   wide?: boolean;
+  updated?: string;
   children: React.ReactNode;
 }) {
   return (
     <>
-      <PageHeader crumbs={crumbs} title={title} intro={intro} />
+      <PageHeader crumbs={crumbs} title={title} intro={intro} updated={updated} />
       <Container className="relative z-10 pb-24">
         <article className={wide ? "" : "max-w-3xl"}>{children}</article>
       </Container>
@@ -75,8 +98,7 @@ export function LegalShell({
       <PageHeader crumbs={crumbs} title={title} intro={intro}>
         <p className="mt-6 flex items-center gap-2 text-sm text-slate-400">
           <Icon name="clock" className="h-4 w-4" />
-          Senest opdateret{" "}
-          {new Date(updated).toLocaleDateString("da-DK", { day: "numeric", month: "long", year: "numeric" })}
+          Senest opdateret {formatDate(updated)}
         </p>
       </PageHeader>
       <Container className="grid gap-12 py-14 lg:grid-cols-[240px_1fr] lg:gap-16">

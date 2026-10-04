@@ -258,6 +258,11 @@ export default function IptvTvPillar() {
       sections={sections}
       faq={faq}
       image={diagramImage}
+      sources={[
+        { label: "Wikipedia – IPTV", href: "https://da.wikipedia.org/wiki/IPTV" },
+        { label: "Kulturministeriet – Ophavsret: film", href: "https://kum.dk/kulturomraader/ophavsret/film" },
+        { label: "Netflix Hjælpecenter – Dataforbrug ved streaming", href: "https://help.netflix.com/en/node/87" },
+      ]}
       about={[
         { name: "IPTV", sameAs: "https://da.wikipedia.org/wiki/IPTV" },
         { name: "Internet Protocol Television", sameAs: "https://en.wikipedia.org/wiki/Internet_Protocol_television" },

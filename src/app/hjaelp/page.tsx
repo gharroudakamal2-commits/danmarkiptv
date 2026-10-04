@@ -23,10 +23,12 @@ const groups: { id: string; icon: IconName; title: string; items: FaqItem[] }[] 
       {
         q: "Hvordan bestiller jeg?",
         a: "Vælg et abonnement på prissiden, og tryk på Bestil. WhatsApp åbner med en udfyldt besked. Vi bekræfter bestillingen skriftligt og sender betalingsoplysninger.",
+        link: { href: "/iptv-abonnement#priser", label: "Se priser" },
       },
       {
         q: "Hvordan kan jeg betale?",
         a: "De mulige betalingsmetoder står i bekræftelsen og i handelsbetingelserne. Du får altid en kvittering, når betalingen er modtaget.",
+        link: { href: "/handelsbetingelser", label: "Handelsbetingelser" },
       },
       {
         q: "Er der skjulte gebyrer?",
@@ -42,6 +44,7 @@ const groups: { id: string; icon: IconName; title: string; items: FaqItem[] }[] 
       {
         q: "Hvordan installerer jeg appen?",
         a: "Du får en vejledning til netop din enhed sammen med dit login. Se også vores Kom i gang-guide for et overblik.",
+        link: { href: "/kom-i-gang", label: "Kom i gang-guiden" },
       },
       {
         q: "Hvor mange enheder kan jeg bruge?",
@@ -61,10 +64,12 @@ const groups: { id: string; icon: IconName; title: string; items: FaqItem[] }[] 
       {
         q: "Billedet hakker eller fryser",
         a: "Genstart router og enhed, brug netværkskabel i stedet for wifi, og luk andre streams i husstanden. Test din hastighed – du skal bruge mindst 10 Mbit/s pr. skærm i HD.",
+        link: { href: "/guides/hvor-hurtigt-internet-til-iptv", label: "Guide til internethastighed" },
       },
       {
         q: "Appen kan ikke logge ind",
         a: "Tjek, at brugernavn og adgangskode er tastet præcist som i din besked, og at abonnementet stadig er aktivt. Virker det stadig ikke, så skriv til os.",
+        link: { href: "/iptv-app", label: "Når appen driller" },
       },
       {
         q: "En kanal virker ikke",
@@ -84,6 +89,7 @@ const groups: { id: string; icon: IconName; title: string; items: FaqItem[] }[] 
       {
         q: "Hvordan fortryder jeg?",
         a: "Du har 14 dages fortrydelsesret. Send os en klar besked på e-mail eller WhatsApp. Læs de fulde regler på siden om fortrydelsesret.",
+        link: { href: "/fortrydelsesret", label: "Fortrydelsesret" },
       },
       {
         q: "Kan jeg skifte til en længere periode?",

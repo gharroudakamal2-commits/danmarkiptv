@@ -5,7 +5,7 @@ import { pageMeta, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ansvarsfraskrivelse",
-  description: `Ansvarsfraskrivelse for indholdet på ${site.name}: guides, eksterne links og varemærker.`,
+  description: `Ansvarsfraskrivelse for ${site.name}: om vores guides, at vi selv sælger IPTV, eksterne links, varemærker og hvordan du melder fejl.`,
   ...pageMeta("/ansvarsfraskrivelse"),
 };
 
