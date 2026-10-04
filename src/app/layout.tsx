@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { WhatsAppFloat } from "@/components/WhatsAppLink";
 import { PointerSpotlight, RevealObserver } from "@/components/Motion";
 import { site } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             ],
           }}
         />
+        <Analytics />
       </body>
     </html>
   );
