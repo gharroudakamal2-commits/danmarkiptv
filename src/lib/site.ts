@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const site = {
   name: "Danmark IPTV",
-  url: "https://danmarkiptv.top",
+  url: "https://www.iptvtv.top",
   locale: "da_DK",
   email: "danmarkiptv64@gmail.com",
   /** Last content update. Drives the hero badge, OG image and sitemap dates. */

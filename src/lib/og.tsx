@@ -53,7 +53,7 @@ export function renderOgImage({ title, eyebrow }: { title: string; eyebrow: stri
 
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 26, color: "#cbd5e1" }}>
           <div style={{ width: 14, height: 14, borderRadius: 7, background: "#e11d48" }} />
-          danmarkiptv.top · IPTV-abonnement uden binding
+          iptvtv.top · IPTV-abonnement uden binding
         </div>
       </div>
     ),

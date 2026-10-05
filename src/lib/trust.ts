@@ -3,7 +3,7 @@
 // under Danish marketing law (markedsføringsloven) and are removed by review platforms.
 
 export const trust = {
-  /** e.g. { source: "Trustpilot", score: 4.6, count: 312, url: "https://dk.trustpilot.com/review/danmarkiptv.top" } */
+  /** e.g. { source: "Trustpilot", score: 4.6, count: 312, url: "https://dk.trustpilot.com/review/iptvtv.top" } */
   rating: null as null | { source: string; score: number; count: number; url: string },
 
   /** Real customer quotes with permission, e.g. { quote: "…", name: "Mette", city: "Aarhus" }. Max 3 shown. */

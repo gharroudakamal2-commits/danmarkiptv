@@ -21,11 +21,12 @@ const nextConfig: NextConfig = {
     return [
       // Merged into the "IPTV tv" pillar page so the two don't compete for the same queries.
       { source: "/hvad-er-iptv", destination: "/iptv-tv", permanent: true },
-      // Always serve the site without "www" so Google sees one canonical host.
+      // Serve everything from one host (www) so Google sees one canonical URL.
+      // Vercel's domain settings also redirect the bare domain; this covers the vercel.app address.
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www.danmarkiptv.top" }],
-        destination: "https://danmarkiptv.top/:path*",
+        has: [{ type: "host", value: "danmarkiptv.vercel.app" }],
+        destination: "https://www.iptvtv.top/:path*",
         permanent: true,
       },
     ];
